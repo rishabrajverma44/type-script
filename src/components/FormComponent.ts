@@ -1,34 +1,34 @@
-import { getFormState, setFormState } from "../app.state";
+import { getFormState, setFormState, updateById } from "../app.state.ts";
 import { App } from "./App";
 
 export function FormComponent() {
   const formState = getFormState();
   const form = document.createElement("form");
-
   const isEditMood = !!formState.formID;
   form.innerHTML = `
   <div>
-     <input name="tittle" value='${
-       formState.formTittle || ""
-     }' placeholder="Tittle" class="inputField" />
-    <button type="submit">${isEditMood ? "Update" : "Add"} Item</button>
+     <input name="title" value='${
+       formState.formTitle || ""
+     }' placeholder="Title" class="inputField" />
+    <button type="submit">${isEditMood ? "Update" : "Add"} Title</button>
   </div>
   `;
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const titleInput = form?.tittle?.value?.trim();
+    const inputElement = form.querySelector<HTMLInputElement>(".inputField");
+    const titleInput = inputElement?.value;
     if (!titleInput) {
       alert("Enter somthing !");
       return;
     }
-    if (isEditMood) {
+    if (isEditMood && formState.formID !== null) {
+      updateById(formState.formID, titleInput);
     } else {
       //generate id here
       const id = Math.floor(Math.random() * 10000).toString();
-      setFormState({ formID: id, formTittle: titleInput });
-      App();
+      setFormState({ formID: id, formTitle: titleInput });
     }
+    App();
   });
   return form;
 }

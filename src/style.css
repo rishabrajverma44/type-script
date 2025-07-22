@@ -31,7 +31,8 @@ h1 {
 }
 
 input {
-  padding: 5px;
+  padding: 6px;
+  width: 240px;
 }
 button {
   border-radius: 8px;
@@ -47,15 +48,37 @@ button {
 button:hover {
   border-color: #646cff;
 }
+table {
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+tr {
+  border: 1px solid black;
+}
+td {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+thead {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.title {
+  width: 200px;
+}
+.action {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
+
   button {
     background-color: #f9f9f9;
   }

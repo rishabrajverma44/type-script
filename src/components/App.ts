@@ -2,10 +2,13 @@ import { FormComponent } from "./FormComponent";
 import { TableComponent } from "./TableComponent";
 
 export function App() {
-  const container: HTMLElement = document.getElementById("app")!;
-  container.innerHTML = "app container";
-  container.appendChild(FormComponent()!);
-  container.appendChild(TableComponent()!)
+  const root = document.getElementById("app");
+  if (root) root.innerHTML = "";
+  const container = document.createElement("div");
+  if (container) {
+    container.appendChild(FormComponent());
+    container.appendChild(TableComponent());
+  }
 
-  return container;
+  root?.appendChild(container);
 }
