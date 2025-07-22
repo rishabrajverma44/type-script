@@ -1,4 +1,4 @@
-import { formState } from "./app.state";
+import { formState } from "./app.state.ts";
 
 export function loadStateFromStore() {
   const data = JSON.parse(localStorage.getItem("newForm")!) || [];
