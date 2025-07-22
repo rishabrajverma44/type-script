@@ -9,14 +9,14 @@ import { App } from "./App";
 export function FilterSearch() {
   const tableData = getTableData();
   const searchDivBox = document.createElement("div");
-  const searchState = getSearchText();
+  const searchStringState = getSearchText();
   searchDivBox.innerHTML = `<div  style="display:${
-    tableData.length == 0&&searchState=="" ? "none" : "block"
+    tableData.length === 0 && searchStringState === "" ? "none" : "block"
   }">
   <span class="box">
-     <input name='search' placeholder='Search' id="searchField" value='${searchState}' />
+     <input name='search' placeholder='Search' id="searchField" value='${searchStringState}' />
      <button id="cancel" style="display: ${
-       searchState !== "" ? "inline-block" : "none"
+       searchStringState !== "" ? "inline-block" : "none"
      };">X</button>
      </span>
      <Button class="button" id="search">Search</Button>
@@ -28,7 +28,7 @@ export function FilterSearch() {
       .querySelector<HTMLInputElement>("#searchField")
       ?.value.trim();
 
-    if (inputVal == "") {
+    if (inputVal ==="") {
       alert("Enter somthing !");
     } else {
       searchFilterStateUpdate(inputVal as string);
