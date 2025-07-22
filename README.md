@@ -17,21 +17,4 @@ cd your-project
 npm install
 npm run dev
 
-project-root/
-├── index.html             ← HTML shell with #app root
-├── style.css              ← Global styles
-└── src/
-    ├── main.js            ← Entry point: loads state, triggers UI render
-    ├── app.state.js       ← Reactive global state
-    ├── app.logic.js       ← Business logic (calculations, filters, derived data)
-    ├── app.storage.js     ← Storage layer (localStorage or others)
-    ├── components/
-    │   ├── App.js         ← Root renderer (composes child components)
-    │   ├── Form.js        ← Input form with create/edit logic
-    │   ├── Table.js       ← Dynamic table/list renderer
-    │   ├── Counters.js    ← Summary counters, totals, metrics
-    │   └── Filters.js     ← Optional filter/search UIs
-    └── utils/
-        ├── dom.js         ← DOM helpers like `createEl()`, `mount()`
-        └── id.js          ← ID generators, randomizers, etc.
 
