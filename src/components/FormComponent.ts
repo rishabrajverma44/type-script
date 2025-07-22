@@ -1,4 +1,4 @@
-import { getFormState, setFormState, updateById } from "../app.state.ts";
+import { getFormState, addFormState, updateById } from "../app.state.ts";
 import { App } from "./App";
 
 export function FormComponent() {
@@ -10,7 +10,9 @@ export function FormComponent() {
      <input name="title" value='${
        formState.formTitle || ""
      }' placeholder="Title" class="inputField" />
-    <button type="submit">${isEditMood ? "Update" : "Add"} Title</button>
+    <button type="submit" class="button">${
+      isEditMood ? "Update" : "Add"
+    } Title</button>
   </div>
   `;
   form.addEventListener("submit", (e) => {
@@ -18,7 +20,7 @@ export function FormComponent() {
     const inputElement = form.querySelector<HTMLInputElement>(".inputField");
     const titleInput = inputElement?.value;
     if (!titleInput) {
-      alert("Enter somthing !");
+      alert("Please enter somthing !");
       return;
     }
     if (isEditMood && formState.formID !== null) {
@@ -26,7 +28,7 @@ export function FormComponent() {
     } else {
       //generate id here
       const id = Math.floor(Math.random() * 10000).toString();
-      setFormState({ formID: id, formTitle: titleInput });
+      addFormState({ formID: id, formTitle: titleInput });
     }
     App();
   });

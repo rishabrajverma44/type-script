@@ -31,8 +31,13 @@ h1 {
 }
 
 input {
+  font-size: large;
   padding: 6px;
   width: 240px;
+  margin-top: 5px;
+}
+.button {
+  width: 100px;
 }
 button {
   border-radius: 8px;
@@ -73,6 +78,15 @@ thead {
   justify-content: space-between;
 }
 
+#cancel {
+  position: absolute;
+  right: 7px;
+  top: -3px;
+  display: block;
+}
+.box {
+  position: relative;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
