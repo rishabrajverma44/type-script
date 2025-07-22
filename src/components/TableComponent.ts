@@ -1,4 +1,5 @@
-import { deleteById, getTableData } from "../app.state.ts";
+import { deleteById, getTableData, setStateForUpdate } from "../app.state.ts";
+import { App } from "./App.ts";
 
 export function TableComponent() {
   const table = document.createElement("div");
@@ -12,7 +13,7 @@ export function TableComponent() {
   <tbody>
     ${tableData
       .map((item) => {
-        return `<tr><td>${item.formTitle}</td><td class='action'><button data-id=${item.formID} class="delete-btn">Delete</button><button data-id=${item.formID}>Edit</button></td></tr>`;
+        return `<tr><td>${item.formTitle}</td><td class='action'><button data-id=${item.formID} class="delete-btn">Delete</button><button data-id=${item.formID} class="edit-btn">Edit</button></td></tr>`;
       })
       .join("")}
   </tbody>
@@ -24,6 +25,19 @@ export function TableComponent() {
       const id = target.dataset.id;
       if (id) {
         deleteById(id);
+        App();
+      }
+    });
+  });
+
+  const editBtn = table.querySelectorAll(".edit-btn");
+  editBtn.forEach((editButton) => {
+    editButton.addEventListener("click", (event) => {
+      const target = event.target as HTMLButtonElement;
+      const id = target.dataset.id;
+      if (id) {
+        setStateForUpdate(id);
+        App();
       }
     });
   });
