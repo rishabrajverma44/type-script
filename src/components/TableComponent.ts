@@ -5,7 +5,7 @@ export function TableComponent() {
   const table = document.createElement("div");
   const tableData = getTableData();
   table.innerHTML = `<table style="display:${
-    tableData.length == 0 ? "none" : "block"
+    tableData.length === 0 ? "none" : "block"
   }">
   <thead>
     <tr>
