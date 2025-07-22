@@ -21,11 +21,13 @@ export function TableComponent() {
   const deleteBtn = table.querySelectorAll(".delete-btn");
   deleteBtn.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
-      const target = event.target as HTMLButtonElement;
-      const id = target.dataset.id;
-      if (id) {
-        deleteById(id);
-        App();
+      if (confirm("delete ?")) {
+        const target = event.target as HTMLButtonElement;
+        const id = target.dataset.id;
+        if (id) {
+          deleteById(id);
+          App();
+        }
       }
     });
   });
