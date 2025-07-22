@@ -4,7 +4,9 @@ import { App } from "./App.ts";
 export function TableComponent() {
   const table = document.createElement("div");
   const tableData = getTableData();
-  table.innerHTML = `<table>
+  table.innerHTML = `<table style="display:${
+    tableData.length == 0 ? "none" : "block"
+  }">
   <thead>
     <tr>
       <td class='title'>Title</td><td>Action</td>
@@ -21,11 +23,13 @@ export function TableComponent() {
   const deleteBtn = table.querySelectorAll(".delete-btn");
   deleteBtn.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
-      const target = event.target as HTMLButtonElement;
-      const id = target.dataset.id;
-      if (id) {
-        deleteById(id);
-        App();
+      if (confirm("delete ?")) {
+        const target = event.target as HTMLButtonElement;
+        const id = target.dataset.id;
+        if (id) {
+          deleteById(id);
+          App();
+        }
       }
     });
   });

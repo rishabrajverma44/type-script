@@ -1,14 +1,18 @@
 import {
   clearFilterState,
   getSearchText,
+  getTableData,
   searchFilterStateUpdate,
 } from "../app.state";
 import { App } from "./App";
 
 export function FilterSearch() {
+  const tableData = getTableData();
   const searchDivBox = document.createElement("div");
   const searchState = getSearchText();
-  searchDivBox.innerHTML = `<div>
+  searchDivBox.innerHTML = `<div  style="display:${
+    tableData.length == 0&&searchState=="" ? "none" : "block"
+  }">
   <span class="box">
      <input name='search' placeholder='Search' id="searchField" value='${searchState}' />
      <button id="cancel" style="display: ${
