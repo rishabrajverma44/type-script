@@ -4,7 +4,9 @@ import { App } from "./App.ts";
 export function TableComponent() {
   const table = document.createElement("div");
   const tableData = getTableData();
-  table.innerHTML = `<table>
+  table.innerHTML = `<table style="display:${
+    tableData.length == 0 ? "none" : "block"
+  }">
   <thead>
     <tr>
       <td class='title'>Title</td><td>Action</td>
